@@ -1,17 +1,26 @@
 {
   "version": 2,
+
   "buildCommand": "python manage.py collectstatic --noinput",
+
   "builds": [
     {
       "src": "api/wsgi.py",
       "use": "@vercel/python",
-      "config": { "maxLambdaSize": "50mb" }
+      "config": {
+        "maxLambdaSize": "50mb"
+      }
+    },
+    {
+      "src": "static/**/*",
+      "use": "@vercel/static"
     },
     {
       "src": "staticfiles/**/*",
       "use": "@vercel/static"
     }
   ],
+
   "routes": [
     {
       "src": "/static/(.*)",
@@ -20,6 +29,13 @@
     {
       "src": "/(.*)",
       "dest": "api/wsgi.py"
+    }
+  ],
+
+  "crons": [
+    {
+      "path": "/api/cron/send-emails/",
+      "schedule": "*/10 * * * *"
     }
   ]
 }
