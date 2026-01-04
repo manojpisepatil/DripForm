@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "api/wsgi.py",
+      "src": "internship/wsgi.py",
       "use": "@vercel/python",
       "config": {
         "maxLambdaSize": "50mb"
@@ -20,12 +20,12 @@
     },
     {
       "src": "/(.*)",
-      "dest": "api/wsgi.py"
+      "dest": "internship/wsgi.py"
     }
   ],
   "crons": [
     {
-      "path": "/api/cron/send-emails/",
+      "path": "/internship/cron/send-emails/",
       "schedule": "*/10 * * * *"
     }
   ]
