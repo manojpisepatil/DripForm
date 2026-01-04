@@ -2,14 +2,14 @@
   "version": 2,
   "builds": [
     {
-      "src": "internship/wsgi.py",
+      "src": "api/wsgi.py",
       "use": "@vercel/python",
       "config": {
         "maxLambdaSize": "50mb"
       }
     },
     {
-      "src": "static/**/*",
+      "src": "fierceleap/static/**/*",
       "use": "@vercel/static"
     }
   ],
@@ -20,13 +20,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "internship/wsgi.py"
-    }
-  ],
-  "crons": [
-    {
-      "path": "/internship/cron/send-emails/",
-      "schedule": "*/10 * * * *"
+      "dest": "api/wsgi.py"
     }
   ]
 }
