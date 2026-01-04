@@ -1,2 +1,2 @@
-from internship.wsgi import application
-
+from internship.wsgi import application as app
+app = application
